@@ -15,11 +15,17 @@ Tool GUI
 **Installation**
 
 Ensure you have Burp Suite installed (ByteBender is compatible with both the Community and Professional editions).
+
 Download the ByteBender.py file from this repository.
+
 In Burp Suite, go to the "Extender" tab.
+
 Click on "Add" in the "Extensions" tab.
+
 Set "Extension Type" to Python.
+
 Select the ByteBender.py file you downloaded.
+
 Click "Next" and the extension should load without errors.
 
 **Usage**
