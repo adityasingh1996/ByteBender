@@ -1,75 +1,125 @@
-ByteBender is a powerful Burp Suite extension that allows you to bend, twist, and reshape your HTTP traffic with precision. It provides advanced string replacement capabilities, supporting multiple search and replace rules, and works seamlessly with various content types including JSON and XML.
-Features
+# ByteBender: Advanced HTTP Request Manipulation Extension for Burp Suite
 
-Multiple Search and Replace Rules: Define and manage multiple rules for complex request modifications.
-Flexible Targeting: Apply rules to specific parts of the request (headers, URL parameters, body).
-Content Type Support: Special handling for JSON and XML content, allowing deep modifications in structured data.
-Tool Scope: Choose which Burp tools to apply the rules (Proxy, Scanner, Repeater).
-Regular Expression Support: Use regex patterns for more powerful search and replace operations.
-Real-time Rule Management: Add, edit, or delete rules on the fly without restarting Burp Suite.
-Request Logging: Keep track of modified requests for easy review and debugging.
+## Introduction
 
-Tool GUI
-![image](https://github.com/user-attachments/assets/50c96ad1-e722-47cf-a6cc-32e00ba0ef15)
+ByteBender is a powerful extension for Burp Suite that provides advanced HTTP request manipulation capabilities. It offers a comprehensive set of features designed to enhance your web application testing and security assessment workflows.
 
-**Installation**
+![image](https://github.com/user-attachments/assets/eca9d23e-6b53-4f34-99de-806a91452a47)
 
-Ensure you have Burp Suite installed (ByteBender is compatible with both the Community and Professional editions).
+## Key Features
 
-Download the ByteBender.py file from this repository.
+- **Flexible Rule Creation**: Develop complex search and replace rules using string matching or regular expressions.
+- **Targeted Modification**: Apply rules to headers, URL parameters, and body content (including JSON and XML).
+- **Conditional Execution**: Implement conditions for precise control over rule application.
+- **Tool-Specific Application**: Choose specific Burp Suite tools (Proxy, Scanner, Repeater, Intruder) for rule execution.
+- **Scope Control**: Option to limit rule application to in-scope requests as defined in Burp Suite.
+- **Dynamic Rule Management**: Add, edit, delete, and reorder rules in real-time without restarting the extension.
+- **Request Logging**: Track modified requests with before and after comparisons.
+- **Built-in Regex Tester**: Efficiently test and refine regular expressions within the extension.
+- **Import/Export Functionality**: Easily save, load, and share rule sets.
+- **Performance Metrics**: Monitor rule application frequency and effectiveness.
 
-In Burp Suite, go to the "Extender" tab.
+## Installation
 
-Click on "Add" in the "Extensions" tab.
+1. Ensure Jython is installed in Burp Suite.
+2. Download the `ByteBender.py` file from this repository.
+3. In Burp Suite, navigate to the "Extender" tab and select "Add".
+4. Choose Python as the extension type and select the `ByteBender.py` file.
+5. Click "Next" to complete the installation.
 
-Set "Extension Type" to Python.
+## User Interface Overview
 
-Select the ByteBender.py file you downloaded.
+ByteBender's interface is divided into two main sections:
 
-Click "Next" and the extension should load without errors.
+### Left Panel
+- Rule creation inputs (Match String, Replace String, Search Type, Condition)
+- Tool and component selection checkboxes
+- Rule list display
+- Control buttons (Add Rule, Enable/Disable Extension, In-Scope Only, Import/Export Rules, Show Statistics)
 
-**Usage**
+### Right Panel
+- Log table of modified requests
+- Request and response viewers:
+  - Original Request
+  - Modified Request
+  - Response
+- Regex testing tool
 
-After installation, you'll find a new tab named "ByteBender" in Burp Suite.
-In the ByteBender tab:
+## Rule Creation and Management
 
-Enter a match string and replace string in the provided fields.
-Select the search type (Normal or Regex).
-Choose which Burp tools to apply the rule to (Proxy, Scanner, Repeater).
-Select where to apply the rule (Headers, URL Parameters, Body).
-Click "Add Rule" to create a new rule.
+1. **Creating Rules**:
+   - Enter the match string, replace string, and optional condition.
+   - Select the search type (Normal or Regex).
+   - Click "Add Rule".
 
+2. **Editing Rules**:
+   - Select a rule from the list.
+   - Click "Edit Rule" to populate the input fields.
+   - Modify as needed and click "Add Rule" to update.
 
-Manage your rules using the "Edit Rule" and "Delete Rule" buttons.
-Enable the extension using the "Enable Extension" button when you're ready to apply your rules.
-Send requests through Burp Suite as normal, and ByteBender will modify them according to your rules.
-Review modified requests in the log table at the bottom of the ByteBender tab.
+3. **Deleting Rules**:
+   - Select a rule from the list.
+   - Click "Delete Rule".
 
-**Advanced Usage**
-JSON and XML Handling
-ByteBender automatically detects JSON and XML content types and applies special processing:
+4. **Reordering Rules**:
+   - Use "Move Up" or "Move Down" buttons to adjust rule priority.
 
-For JSON: Modifies both keys and values in the JSON structure.
-For XML: Modifies element tags, attribute names and values, and text content.
+## Rule Application Logic
 
-This allows for deep modifications in complex API requests and responses.
+Rules are applied based on:
+- Selected Burp Suite tools
+- Chosen request components
+- Search type (string matching or regex)
+- Specified conditions (if any)
 
-**Regular Expressions**
-When using the "Regex" search type, you can leverage powerful regex patterns. For example:
+## Scope Functionality
 
-^Bearer\s+(.*)$ could match and replace entire Authorization headers.
-"id"\s*:\s*"(\d+)" could target specific JSON fields.
+The "In-Scope Only" option restricts rule application to URLs within the Burp Suite's defined scope.
 
-**Troubleshooting**
+## Logging and History
 
-If rules are not applying, check if the extension is enabled and if the correct modules and locations are selected.
-For JSON/XML modifications, ensure the content type is correctly set in the request headers.
-Check the Burp Suite Extender output for any error messages if the extension is not functioning as expected.
+- The log table displays requests modified by ByteBender.
+- Selecting a log entry shows the original request, modified request, and response in respective tabs.
 
-**License**
-ByteBender is released under the MIT License. See the LICENSE file for details.
+## Regular Expression Tester
 
-**Disclaimer**
-This tool is intended for use in authorized security testing only. Users are responsible for complying with applicable laws and regulations.
+The built-in tool allows users to:
+1. Input test text
+2. Specify a regex pattern
+3. View matching results in real-time
 
-Author: Aditya Singh
+This feature aids in developing and refining regular expressions for use in rules.
+
+## Data Management
+
+- **Export Rules**: Save current rule sets to JSON format.
+- **Import Rules**: Load previously saved rule sets for easy sharing and backup.
+
+## Performance Considerations
+
+ByteBender is engineered for optimal performance:
+- Efficient rule application algorithms
+- Multi-threaded processing for concurrent requests
+- Optimized regular expression handling
+
+## Advantages over Similar Tools
+
+1. **Versatility**: Combines string replacement and regular expressions with conditional logic.
+2. **Seamless Integration**: Fully integrates with Burp Suite's existing functionality and scope controls.
+3. **Intuitive Interface**: User-friendly design for managing complex rules.
+4. **Granular Control**: Apply rules to specific tools, request components, and data structures.
+5. **Integrated Regex Testing**: Eliminates the need for external regex testing tools.
+6. **Dynamic Updates**: Modify rules without restarting the extension or Burp Suite.
+7. **Optimized Performance**: Designed for efficiency in complex manipulation scenarios.
+
+## Contributing
+
+We welcome contributions to ByteBender. Please feel free to submit pull requests, report issues, or suggest new features through our GitHub repository.
+
+## License
+
+[Insert your chosen license information here]
+
+---
+
+ByteBender enhances Burp Suite's capabilities, offering security professionals and developers a robust tool for HTTP request manipulation. Its combination of powerful features and user-friendly design makes it an invaluable asset for web application testing and security assessments.
