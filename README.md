@@ -112,14 +112,5 @@ ByteBender is engineered for optimal performance:
 6. **Dynamic Updates**: Modify rules without restarting the extension or Burp Suite.
 7. **Optimized Performance**: Designed for efficiency in complex manipulation scenarios.
 
-## Contributing
-
-We welcome contributions to ByteBender. Please feel free to submit pull requests, report issues, or suggest new features through our GitHub repository.
-
-## License
-
-[Insert your chosen license information here]
-
 ---
 
-ByteBender enhances Burp Suite's capabilities, offering security professionals and developers a robust tool for HTTP request manipulation. Its combination of powerful features and user-friendly design makes it an invaluable asset for web application testing and security assessments.
