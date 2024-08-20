@@ -1,5 +1,5 @@
 #Author: Aditya Singh
-from burp import IBurpExtender, ITab, IHttpListener, IMessageEditorController
+from burp import IBurpExtender, ITab, IHttpListener, IMessageEditorController, IExtensionStateListener
 from javax.swing import (JPanel, JTextField, JButton, JCheckBox, JLabel, JComboBox, BoxLayout, JScrollPane, BorderFactory, JTable, ListSelectionModel, JSplitPane, JTabbedPane, JTextArea, JList, DefaultListModel, JFileChooser, JOptionPane)
 from javax.swing.table import AbstractTableModel
 from java.awt import GridBagLayout, GridBagConstraints, Color, Dimension, BorderLayout
@@ -12,7 +12,7 @@ import xml.etree.ElementTree as ET
 import threading
 from java.util.concurrent import Executors, TimeUnit
 
-class BurpExtender(IBurpExtender, ITab, IHttpListener, IMessageEditorController):
+class BurpExtender(IBurpExtender, ITab, IHttpListener, IMessageEditorController, IExtensionStateListener):
     
     
     
@@ -220,8 +220,15 @@ class BurpExtender(IBurpExtender, ITab, IHttpListener, IMessageEditorController)
     
         callbacks.addSuiteTab(self)
         callbacks.registerHttpListener(self)
+        callbacks.registerExtensionStateListener(self)
     
         print("Extension loaded successfully")
+        
+        
+    def extensionUnloaded(self):
+        print("ByteBender extension is being unloaded")
+        self._executor.shutdown()
+        print("Executor shutdown initiated")
 
     def getTabCaption(self):
         return "ByteBender"
