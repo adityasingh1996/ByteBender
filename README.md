@@ -99,7 +99,7 @@ This feature aids in developing and refining regular expressions for use in rule
 
 ByteBender is engineered for optimal performance:
 - Efficient rule application algorithms
-- Multi-threaded processing for concurrent requests
+- Multi-threaded processing for concurrent requests [***Still in development***]
 - Optimized regular expression handling
 
 ## Advantages over Similar Tools
