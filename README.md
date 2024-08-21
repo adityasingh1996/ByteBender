@@ -32,7 +32,7 @@ ByteBender is a powerful extension for Burp Suite that provides advanced HTTP re
 ByteBender's interface is divided into two main sections:
 
 ### Left Panel
-![image](https://github.com/user-attachments/assets/95136710-5d8c-4fb3-8be7-05ddcf674c6f)
+![image](https://github.com/user-attachments/assets/3ed2e8ea-241a-4273-a458-9387efa49cbd)
 
 - Rule creation inputs (Match String, Replace String, Search Type, Condition)
 - Tool and component selection checkboxes
@@ -40,7 +40,7 @@ ByteBender's interface is divided into two main sections:
 - Control buttons (Add Rule, Enable/Disable Extension, In-Scope Only, Import/Export Rules, Show Statistics)
 
 ### Right Panel
-![image](https://github.com/user-attachments/assets/3922fb65-a647-41c6-9eb4-77004935c3ea)
+![image](https://github.com/user-attachments/assets/93c01805-985c-4ca2-b043-2e8b14828928)
 
 - Log table of modified requests
 - Request and response viewers:
@@ -50,7 +50,7 @@ ByteBender's interface is divided into two main sections:
 - Regex testing tool
 
 ## Rule Creation and Management
-![image](https://github.com/user-attachments/assets/9ef76407-9a60-4fe7-89d1-b38822768b78)
+![image](https://github.com/user-attachments/assets/98417f3f-06f6-4caa-b81e-ba9a90d95fa7)
 
 1. **Creating Rules**:
    - Enter the match string, replace string, and optional condition.
