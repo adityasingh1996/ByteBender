@@ -396,10 +396,31 @@ class BurpExtender(IBurpExtender, ITab, IHttpListener, IMessageEditorController,
         
         url = parts[1]
         path, params = url.split('?', 1)
-        newParams, modified = self.processParams(params, searchType, matchString, replaceString)
+        pairs = params.split('&')
+        newPairs = []
+        modified = False
+        
+        for pair in pairs:
+            if '=' in pair:
+                key, value = pair.split('=', 1)
+                newKey = self.processString(key, searchType, matchString, replaceString)
+                decodedValue = URLDecoder.decode(value, "UTF-8")
+                newValue = self.processString(decodedValue, searchType, matchString, replaceString)
+                
+                if newKey != key or newValue != decodedValue:
+                    modified = True
+                
+                encodedValue = URLEncoder.encode(newValue, "UTF-8")
+                newPairs.append("{0}={1}".format(newKey, encodedValue))
+            else:
+                # Handle cases where there's no '=' in the pair (e.g., flag parameters)
+                newPair = self.processString(pair, searchType, matchString, replaceString)
+                if newPair != pair:
+                    modified = True
+                newPairs.append(newPair)
         
         if modified:
-            parts[1] = "{0}?{1}".format(path, newParams)
+            parts[1] = "{0}?{1}".format(path, '&'.join(newPairs))
             return ' '.join(parts), True
         
         return requestLine, False
